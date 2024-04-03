@@ -1,0 +1,2 @@
+FLASK_APP=questionnaires
+FLASK_DEBUG=1

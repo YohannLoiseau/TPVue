@@ -46,6 +46,7 @@ class QuestionSimple(Question):
     choix1 = db.Column(db.String(120))
     choix2 = db.Column(db.String(120))
     choix3 = db.Column(db.String(120))
+    choix4 = db.Column(db.String(120))
 
     __mapper_args__ = {
         'polymorphic_identity': 'simple',
@@ -59,14 +60,15 @@ class QuestionSimple(Question):
             'reponse': self.reponse,
             'choix1': self.choix1,
             'choix2': self.choix2,
-            'choix3': self.choix3
+            'choix3': self.choix3,
+            'choix4': self.choix4
         }
     
-    def add_question(title, question_type, reponse, choix1, choix2, choix3, questionnaire_id):
+    def add_question(title, question_type, reponse, choix1, choix2, choix3, choix4, questionnaire_id):
         if question_type != 'simple':
             raise ValueError('Invalid question type')
         question = QuestionSimple(title=title, question_type=question_type, reponse=reponse, 
-                                  choix1=choix1, choix2=choix2, choix3=choix3, questionnaire_id=questionnaire_id)
+                                  choix1=choix1, choix2=choix2, choix3=choix3, choix4=choix4, questionnaire_id=questionnaire_id)
         db.session.add(question)
         db.session.commit()
         return question
